@@ -143,8 +143,11 @@ class MainActivity : SimpleActivity(), Calculator {
         }
     }
 
-    override fun showNewResult(value: String, context: Context) {
+    override fun showNewResult(value: String, context: Context, announceResult: Boolean) {
         result.text = value
+        if (announceResult) {
+            result.announceForAccessibility(getString(R.string.result_announcement, value))
+        }
     }
 
     private fun checkWhatsNewDialog() {

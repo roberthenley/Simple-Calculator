@@ -3,8 +3,19 @@
     <string name="app_launcher_name">Rechner</string>ng>
     <string name="scientific_calculator">Wissenschaftlicher Rechner</string>
 
+    <!-- Calculator screen -->
+    <string name="minus_button">minus</string>
+    <string name="percent_button">modulo</string>
+    <string name="exponentiation_button">hoch</string>
+    <string name="clear_button">löschen</string>
+    <string name="reset_button">rücksetzen</string>
+    <string name="formula_field_label">Aktuelle Formel</string>
+    <string name="result_field_label">Ergebnis</string>
+    <string name="result_announcement">Ergebnis ist %1$s</string>
+
     <!-- Calculator field -->
     <string name="formula_divide_by_zero_error">Fehler: Division durch Null</string>
+    <string name="formula_modulo_by_zero_error">Fehler: Modulo durch Null</string>
 
     <!-- Settings -->
     <string name="vibrate_on_button_press">Bei Tastendruck vibrieren</string>

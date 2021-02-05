@@ -8,30 +8,44 @@
     tools:context="com.simplemobiletools.calculator.activities.MainActivity"
     tools:ignore="HardcodedText">
 
-    <TextView
-        android:id="@+id/formula"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2.1"
-        android:fontFamily="sans-serif-light"
-        android:gravity="end|bottom"
-        android:maxLines="1"
-        android:paddingLeft="@dimen/activity_margin"
-        android:paddingRight="@dimen/activity_margin"
-        android:textSize="@dimen/formula_text_size" />
+        android:contentDescription="@string/formula_field_label"
+        android:labelFor="@+id/formula" >
 
-    <TextView
-        android:id="@+id/result"
+        <TextView
+            android:id="@+id/formula"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-light"
+            android:gravity="end|bottom"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:textSize="@dimen/formula_text_size" />
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.8"
-        android:fontFamily="sans-serif-light"
-        android:gravity="center_vertical|end"
-        android:maxLines="1"
-        android:paddingLeft="@dimen/activity_margin"
-        android:paddingRight="@dimen/activity_margin"
-        android:textSize="@dimen/display_text_size"
-        tools:text="0" />
+        android:contentDescription="@string/result_field_label"
+        android:labelFor="@+id/result">
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_vertical|end"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/activity_margin"
+            android:paddingRight="@dimen/activity_margin"
+            android:textSize="@dimen/display_text_size"
+            tools:text="0" />
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,7 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="%" />
+            android:text="%"
+            android:contentDescription="@string/percent_button"/>
 
         <Button
             android:id="@+id/btn_power"
@@ -53,7 +68,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="^" />
+            android:text="^"
+            android:contentDescription="@string/exponentiation_button" />
 
         <Button
             android:id="@+id/btn_root"
@@ -69,7 +85,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="C" />
+            android:text="C"
+            android:contentDescription="@string/clear_button" />
 
         <Button
             android:id="@+id/btn_reset"
@@ -78,7 +95,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="AC"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:contentDescription="@string/reset_button" />
     </LinearLayout>
 
     <LinearLayout
@@ -195,7 +213,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="-" />
+            android:text="-"
+            android:contentDescription="@string/minus_button" />
     </LinearLayout>
 
     <LinearLayout

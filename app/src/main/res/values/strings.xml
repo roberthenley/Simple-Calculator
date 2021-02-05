@@ -3,8 +3,19 @@
     <string name="app_launcher_name">Calculator</string>
     <string name="scientific_calculator">Scientific Calculator</string>
 
+    <!-- Calculator screen -->
+    <string name="minus_button">minus</string>
+    <string name="percent_button">modulo</string>
+    <string name="exponentiation_button">to the power of</string>
+    <string name="clear_button">Clear</string>
+    <string name="reset_button">Reset</string>
+    <string name="formula_field_label">Current formula</string>
+    <string name="result_field_label">Result</string>
+    <string name="result_announcement">Result is %1$s</string>
+
     <!-- Calculator field -->
     <string name="formula_divide_by_zero_error">Error: division by zero</string>
+    <string name="formula_modulo_by_zero_error">Error: modulo by zero</string>
 
     <!-- Settings -->
     <string name="vibrate_on_button_press">Vibrate on button press</string>

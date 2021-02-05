@@ -173,9 +173,13 @@ class CalculatorImpl(calculator: Calculator, private val context: Context) {
                     context.toast(R.string.formula_divide_by_zero_error)
                     return
                 }
+                if (sign == "%" && secondValue == 0.0) {
+                    context.toast(R.string.formula_modulo_by_zero_error)
+                    return
+                }
 
                 val result = ExpressionBuilder(expression.replace(",", "")).build().evaluate()
-                showNewResult(result.format())
+                showNewResult(result.format(), true)
                 baseValue = result
                 inputDisplayedFormula = result.format()
                 showNewFormula(expression.replace("sqrt", "√").replace("*", "×").replace("/", "÷"))
@@ -207,8 +211,8 @@ class CalculatorImpl(calculator: Calculator, private val context: Context) {
         }
     }
 
-    private fun showNewResult(value: String) {
-        callback!!.showNewResult(value, context)
+    private fun showNewResult(value: String, announceResult: Boolean = false) {
+        callback!!.showNewResult(value, context, announceResult)
     }
 
     private fun showNewFormula(value: String) {
@@ -229,7 +233,7 @@ class CalculatorImpl(calculator: Calculator, private val context: Context) {
 
     fun handleReset() {
         resetValues()
-        showNewResult("0")
+        showNewResult("0", true)
         showNewFormula("")
         inputDisplayedFormula = ""
     }

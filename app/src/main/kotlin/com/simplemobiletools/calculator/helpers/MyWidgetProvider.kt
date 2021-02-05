@@ -114,7 +114,7 @@ class MyWidgetProvider : AppWidgetProvider(), Calculator {
         }
     }
 
-    override fun showNewResult(value: String, context: Context) {
+    override fun showNewResult(value: String, context: Context, announceResult: Boolean) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
         appWidgetManager.getAppWidgetIds(getComponentName(context)).forEach {
             val views = RemoteViews(context.packageName, R.layout.widget)
