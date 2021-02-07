@@ -256,15 +256,7 @@ class CalculatorImpl(calculator: Calculator, private val context: Context) {
     }
 
     fun numpadClicked(id: Int) {
-        if (inputDisplayedFormula == Double.NaN.toString()) {
-            inputDisplayedFormula = ""
-        }
-
-        if (lastKey == EQUALS) {
-            lastOperation = EQUALS
-        }
-
-        lastKey = DIGIT
+        numberEntrySetup()
 
         when (id) {
             R.id.btn_decimal -> decimalClicked()
@@ -279,5 +271,30 @@ class CalculatorImpl(calculator: Calculator, private val context: Context) {
             R.id.btn_8 -> addDigit(8)
             R.id.btn_9 -> addDigit(9)
         }
+    }
+
+    fun numberKeyPressed(num: Int) {
+        numberEntrySetup()
+        when (num) {
+            0 -> zeroClicked()
+            else -> addDigit(num)
+        }
+    }
+
+    fun decimalKeyPressed() {
+        numberEntrySetup()
+        decimalClicked()
+    }
+
+    private fun numberEntrySetup() {
+        if (inputDisplayedFormula == Double.NaN.toString()) {
+            inputDisplayedFormula = ""
+        }
+
+        if (lastKey == EQUALS) {
+            lastOperation = EQUALS
+        }
+
+        lastKey = DIGIT
     }
 }

@@ -3,6 +3,7 @@ package com.simplemobiletools.calculator.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -72,6 +73,108 @@ class MainActivity : SimpleActivity(), Calculator {
         }
 
         vibrateOnButtonPress = config.vibrateOnButtonPress
+    }
+
+    override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
+        if (event.isShiftPressed) {
+            return when (keyCode) {
+                KeyEvent.KEYCODE_5 -> { // '%'
+                    calc.handleOperation(PERCENT)
+                    true
+                }
+                KeyEvent.KEYCODE_6 -> { // '^'
+                    calc.handleOperation(POWER)
+                    true
+                }
+                KeyEvent.KEYCODE_8 -> { // '*'
+                    calc.handleOperation(MULTIPLY)
+                    true
+                }
+                KeyEvent.KEYCODE_EQUALS -> { // '+'
+                    calc.handleOperation(PLUS)
+                    true
+                }
+                else -> super.onKeyUp(keyCode, event)
+            }
+        } else if (event.isAltPressed || event.isCtrlPressed || event.isMetaPressed) {
+            return super.onKeyUp(keyCode, event)
+        }
+        return when (keyCode) {
+            KeyEvent.KEYCODE_PLUS, KeyEvent.KEYCODE_NUMPAD_ADD -> {
+                calc.handleOperation(PLUS)
+                true
+            }
+            KeyEvent.KEYCODE_MINUS, KeyEvent.KEYCODE_NUMPAD_SUBTRACT -> {
+                calc.handleOperation(MINUS)
+                true
+            }
+            KeyEvent.KEYCODE_SLASH, KeyEvent.KEYCODE_NUMPAD_DIVIDE -> {
+                calc.handleOperation(DIVIDE)
+                true
+            }
+            KeyEvent.KEYCODE_STAR, KeyEvent.KEYCODE_NUMPAD_MULTIPLY -> {
+                calc.handleOperation(MULTIPLY)
+                true
+            }
+            KeyEvent.KEYCODE_EQUALS, KeyEvent.KEYCODE_NUMPAD_EQUALS,
+            KeyEvent.KEYCODE_ENTER, KeyEvent.KEYCODE_NUMPAD_ENTER -> {
+                calc.handleEquals()
+                true
+            }
+            KeyEvent.KEYCODE_PERIOD, KeyEvent.KEYCODE_NUMPAD_DOT -> {
+                calc.decimalKeyPressed()
+                true
+            }
+            KeyEvent.KEYCODE_0, KeyEvent.KEYCODE_NUMPAD_0 -> {
+                calc.numberKeyPressed(0)
+                true
+            }
+            KeyEvent.KEYCODE_1, KeyEvent.KEYCODE_NUMPAD_1 -> {
+                calc.numberKeyPressed(1)
+                true
+            }
+            KeyEvent.KEYCODE_2, KeyEvent.KEYCODE_NUMPAD_2 -> {
+                calc.numberKeyPressed(2)
+                true
+            }
+            KeyEvent.KEYCODE_3, KeyEvent.KEYCODE_NUMPAD_3 -> {
+                calc.numberKeyPressed(3)
+                true
+            }
+            KeyEvent.KEYCODE_4, KeyEvent.KEYCODE_NUMPAD_4 -> {
+                calc.numberKeyPressed(4)
+                true
+            }
+            KeyEvent.KEYCODE_5, KeyEvent.KEYCODE_NUMPAD_5 -> {
+                calc.numberKeyPressed(5)
+                true
+            }
+            KeyEvent.KEYCODE_6, KeyEvent.KEYCODE_NUMPAD_6 -> {
+                calc.numberKeyPressed(6)
+                true
+            }
+            KeyEvent.KEYCODE_7, KeyEvent.KEYCODE_NUMPAD_7 -> {
+                calc.numberKeyPressed(7)
+                true
+            }
+            KeyEvent.KEYCODE_8, KeyEvent.KEYCODE_NUMPAD_8 -> {
+                calc.numberKeyPressed(8)
+                true
+            }
+            KeyEvent.KEYCODE_9, KeyEvent.KEYCODE_NUMPAD_9 -> {
+                calc.numberKeyPressed(9)
+                true
+            }
+            KeyEvent.KEYCODE_C, KeyEvent.KEYCODE_BACK, KeyEvent.KEYCODE_DEL -> {
+                calc.handleClear()
+                true
+            }
+            KeyEvent.KEYCODE_A -> {
+                calc.handleReset()
+                true
+            }
+            else -> super.onKeyUp(keyCode, event)
+        }
     }
 
     override fun onPause() {
